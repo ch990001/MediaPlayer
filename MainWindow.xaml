@@ -14,11 +14,10 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <MediaElement HorizontalAlignment="Left" Height="330" Margin="43,68,0,0" VerticalAlignment="Top" Width="659"/>
-        <Button Content="播放" HorizontalAlignment="Left" Margin="43,420,0,0" VerticalAlignment="Top" Width="103" Height="30" Background="#FF6AC928"/>
-        <Button Content="暫停 " HorizontalAlignment="Left" Margin="167,420,0,0" VerticalAlignment="Top" Width="103" Height="30" Background="#FF28A4C9"/>
-        <Button Content="停止" HorizontalAlignment="Left" Margin="294,420,0,0" VerticalAlignment="Top" Width="103" Height="30" Background="#FFC92828" BorderBrush="#FF707070" Foreground="#FF56E6C5"/>
-        <Button Content="停止" HorizontalAlignment="Left" Margin="417,420,0,0" VerticalAlignment="Top" Width="103" Height="30" BorderBrush="#FF707070" Foreground="Black">
+        <Button x:Name="btnPlay" Content="播放" HorizontalAlignment="Left" Margin="15,420,0,0" VerticalAlignment="Top" Width="103" Height="30" Background="#FF6AC928" Click="btnPlay_Click" FontSize="16"/>
+        <Button x:Name="btnPause" Content="暫停 " HorizontalAlignment="Left" Margin="139,420,0,0" VerticalAlignment="Top" Width="103" Height="30" Background="#FF28A4C9" Click="btnPause_Click" FontSize="16"/>
+        <Button x:Name="btnStop" Content="停止" HorizontalAlignment="Left" Margin="266,420,0,0" VerticalAlignment="Top" Width="103" Height="30" Background="#FFC92828" BorderBrush="#FF707070" Foreground="#FF56E6C5" Click="btnStop_Click" FontSize="16"/>
+        <Button x:Name="btnExit" Content="離開" HorizontalAlignment="Left" Margin="389,420,0,0" VerticalAlignment="Top" Width="103" Height="30" BorderBrush="#FF707070" Foreground="Black" Click="btnExit_Click" FontSize="16">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -26,7 +25,20 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="43,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="506"/>
-        <Button Content="開啟檔案" HorizontalAlignment="Left" Margin="554,40,0,0" VerticalAlignment="Top" Width="148" Height="23" Background="#FFDFF7CF"/>
+        <TextBox x:Name="txtFilePath" HorizontalAlignment="Left" Height="23" Margin="43,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="506" FontSize="16"/>
+        <Button x:Name="btnOpenFile" Content="開啟檔案" HorizontalAlignment="Left" Margin="554,40,0,0" VerticalAlignment="Top" Width="148" Height="23" Background="#FFDFF7CF" Click="btnOpenFile_Click" FontSize="16"/>
+        <MediaElement x:Name="MedShow" HorizontalAlignment="Left" Height="330" Margin="43,63,0,0" VerticalAlignment="Top" Width="659" MediaOpened="MedShow_MediaOpened"/>
+        <Slider x:Name="sliVolume" HorizontalAlignment="Left" Margin="505,426,0,0" VerticalAlignment="Top" Width="120" LargeChange="0.05" Maximum="1" TickFrequency="0.01" Value="0.5" ValueChanged="sliVolume_ValueChanged"/>
+        <Slider x:Name="sliProgress" HorizontalAlignment="Left" Margin="43,395,0,0" VerticalAlignment="Top" Width="657" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonUp="sliProgress_PreviewMouseLeftButtonUp">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.223"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <TextBox x:Name="txtTime" HorizontalAlignment="Left" Margin="635,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" FontSize="16"/>
     </Grid>
 </Window>
